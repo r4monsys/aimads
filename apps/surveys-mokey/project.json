@@ -1,0 +1,97 @@
+{
+  "projectType": "application",
+  "root": "apps/surveys-mokey",
+  "sourceRoot": "apps/surveys-mokey/src",
+  "prefix": "jaouhar",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/surveys-mokey",
+        "index": "apps/surveys-mokey/src/index.html",
+        "main": "apps/surveys-mokey/src/main.ts",
+        "polyfills": "apps/surveys-mokey/src/polyfills.ts",
+        "tsConfig": "apps/surveys-mokey/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/surveys-mokey/src/favicon.ico",
+          "apps/surveys-mokey/src/assets"
+        ],
+        "styles": ["apps/surveys-mokey/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/surveys-mokey/src/environments/environment.ts",
+              "with": "apps/surveys-mokey/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "surveys-mokey:build:production"
+        },
+        "development": {
+          "browserTarget": "surveys-mokey:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "proxyConfig": "apps/surveys-mokey/proxy.conf.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "surveys-mokey:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/surveys-mokey/**/*.ts",
+          "apps/surveys-mokey/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/surveys-mokey"],
+      "options": {
+        "jestConfig": "apps/surveys-mokey/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

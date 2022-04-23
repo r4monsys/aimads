@@ -1,0 +1,28 @@
+{
+  "root": "apps/surveys-mokey-e2e",
+  "sourceRoot": "apps/surveys-mokey-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/surveys-mokey-e2e/cypress.json",
+        "devServerTarget": "surveys-mokey:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "surveys-mokey:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/surveys-mokey-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["surveys-mokey"]
+}

@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "surveys-mokey": "apps/surveys-mokey",
+    "surveys-mokey-e2e": "apps/surveys-mokey-e2e"
+  }
+}
