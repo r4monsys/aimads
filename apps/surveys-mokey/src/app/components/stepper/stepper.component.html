@@ -1,0 +1,5 @@
+<ul class="stepper" #stepperRef>
+    <li *ngFor="let step of steps; let i = index" [ngClass]="{ active: i <= currentStep! }">
+        {{ step }}
+    </li>
+</ul>

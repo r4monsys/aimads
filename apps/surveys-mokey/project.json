@@ -18,8 +18,13 @@
           "apps/surveys-mokey/src/favicon.ico",
           "apps/surveys-mokey/src/assets"
         ],
-        "styles": ["apps/surveys-mokey/src/styles.scss"],
-        "scripts": []
+        "styles": [
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "apps/surveys-mokey/src/styles.scss"
+        ],
+        "scripts": [
+          
+        ]
       },
       "configurations": {
         "production": {

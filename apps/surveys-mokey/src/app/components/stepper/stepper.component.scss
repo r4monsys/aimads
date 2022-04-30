@@ -1,0 +1,67 @@
+//@import 'apps/surveys-mokey/src/styles/variables';
+//stepper
+$stepper-fonts: ( 'font-size': 0.75rem, 'font-weight': 300, 'font-style': normal, );
+$stepper-colors: ( 'blue': #1678f8, 'disabled-background': #e0e0e0, 'diasbled-color': #7f7f7f, 'white': #ffffff, 'dark-color': #333333, );
+@mixin stepper-fonts-properties($font-size, $font-weight, $font-style, $color) {
+    font-size: map-get($map: $stepper-fonts, $key: $font-size);
+    font-weight: map-get($map: $stepper-fonts, $key: $font-weight);
+    font-style: map-get($map: $stepper-fonts, $key: $font-style);
+    color: map-get($map: $stepper-colors, $key: $color);
+}
+
+.stepper li {
+    @include stepper-fonts-properties('font-size', 'font-weight', 'font-style', 'diasbled-color');
+    list-style-type: none;
+    float: left;
+    position: relative;
+    text-align: center;
+    //cursor: pointer;
+}
+
+.stepper li:before {
+    @include stepper-fonts-properties('font-size', 'font-weight', 'font-style', 'diasbled-color');
+    content: attr(stepper-content);
+    line-height: 30px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 10px;
+    background-color: map-get($map: $stepper-colors, $key: 'disabled-background');
+}
+
+.stepper li:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: map-get($map: $stepper-colors, $key: 'disabled-background');
+    top: 15px;
+    left: -50%;
+    z-index: -1;
+    background: linear-gradient( to left, map-get($map: $stepper-colors, $key: 'disabled-background') 50%, map-get($map: $stepper-colors, $key: 'blue') 50%) right;
+    background-size: 200%;
+    transition: 0.5s ease-out;
+}
+
+.stepper li:first-child:after {
+    content: none;
+}
+
+.stepper li.active {
+    color: map-get($map: $stepper-colors, $key: 'dark-color');
+}
+
+.stepper li.active:before {
+    border-color: map-get($map: $stepper-colors, $key: 'blue');
+    background-color: map-get($map: $stepper-colors, $key: 'blue');
+    color: #fff;
+    content: attr(stepper-content);
+}
+
+.stepper li.active:after {
+    background-color: map-get($map: $stepper-colors, $key: 'blue');
+    width: attr(stepper-progress-width);
+    background-position: left;
+}

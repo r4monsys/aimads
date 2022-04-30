@@ -1,9 +1,33 @@
-<div style="text-align: center">
-  <h1>Welcome to surveys-mokey!</h1>
-  <img
-    width="450"
-    src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png"
-    alt="Nx - Smart, Fast and Extensible Build System"
-  />
-</div>
-<div>Message: {{ hello$ | async | json }}</div>
+<ng-template [ngIf]="currentStep >= 0 && data" [ngIfElse]="main">
+    <div class="d-flex align-items-center flex-column pt-4" style="height: 100vh;">
+        <div class="text-center" style="width: 30%">
+            <jaouhar-stepper [steps]="steps" [currentStep]="currentStep"></jaouhar-stepper>
+            
+        </div>
+
+        <hr style="height:2px; width:100%; border-width:0; background-color:rgb(199, 198, 198)">
+
+        <div class="pt-4">
+            <h6>{{ data.questions[currentStep].question }}</h6>
+        </div>
+
+        <div class="pt-4 choices">
+            <button class="button mb-3" *ngFor="let choice of data.questions[currentStep].choices" [ngClass]="{'selected': choice.selected}" (click)="selectChoice(choice)">{{ choice.label }}</button>
+        </div>
+
+        <div class="mt-auto mb-4 text-center" style="width: 100%; padding-bottom: 40px;">
+            <button *ngIf="false" type="button" class="button next mt-4" [ngClass]="{'disabled': !isBtnNextEnabled}" (click)="next()">Next</button>
+        </div>
+    </div>
+ </ng-template>
+
+<ng-template #main>
+    <div class="row align-items-start text-center" style="height: 100vh; margin-top: 12%;">
+        <div class="p-2">
+            <h1 class="title">{{data?.title}}</h1>
+            <h3 class="subtitle">{{data?.subtitle}}</h3>
+
+            <button type="button" class="button start mt-4" (click)="next()">Start survey</button>
+        </div>
+    </div>
+</ng-template>

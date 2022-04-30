@@ -1,0 +1,36 @@
+{
+    "title": "Lorem ipsum dolor sit amet",
+    "subtitle": "consectetur adipiscing elit.",
+    "questions": [
+        {
+            "question": "Which image best describes your current body type?",
+            "maxChoices": 1,
+            "choices": [
+                {"img": "", "label": "Ectomorph"},
+                {"img": "", "label": "Mesomorph"},
+                {"img": "", "label": "Endomorph"},
+                {"img": "", "label": "Not sure"}
+            ]
+        },
+        {
+            "question": "Choose your goal",
+            "maxChoices": 2,
+            "choices": [
+                {"img": "", "label": "Lose weight"},
+                {"img": "", "label": "Gain muscle"},
+                {"img": "", "label": "Maintain current weight"},
+                {"img": "", "label": "Improve health"}
+
+            ]
+        },
+        {
+            "question": "Select your fitness level",
+            "maxChoices": 1,
+            "choices": [
+                {"img": "", "label": "Beginner"},
+                {"img": "", "label": "Intermediate"},
+                {"img": "", "label": "Advanced"}
+            ]
+        }
+    ]
+}
